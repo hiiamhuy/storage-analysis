@@ -4,17 +4,17 @@ A comprehensive storage analysis script for sites hosted on Pantheon with automa
 
 ## Features
 
-- **Platform Auto-Detection** - Automatically identifies WordPress, Drupal, or generic sites
-- **Comprehensive Analysis** - Total site size, directory breakdown, file statistics, and component analysis
-- **Multi-Environment Support** - Analyze dev, test, live, or all environments with comparison
-- **Export Capabilities** - JSON, CSV, TXT, HTML, and Markdown formats
-- **Robust Error Handling** - Handles PHP warnings and broken pipe errors common on Pantheon
-- **Database Size Reporting** - Platform-specific database size analysis
+- **Platform Auto-Detection**: Automatically identifies WordPress, Drupal, or generic sites
+- **Comprehensive Analysis**: Total site size, directory breakdown, file statistics, and component analysis
+- **Multi-Environment Support**: Analyze dev, test, live, or all environments with comparison
+- **Export Capabilities**: JSON, CSV, TXT, HTML, and Markdown formats
+- **Robust Error Handling**: Handles PHP warnings and broken pipe errors common on Pantheon
+- **Database Size Reporting**: Platform-specific database size analysis
 
 ## Requirements
 
-- **Terminus CLI** (`/usr/local/bin/terminus`) - Pantheon's command-line tool
-- **Authenticated Terminus session** - Must be logged in via `terminus auth:login`
+- **Terminus CLI** (`/usr/local/bin/terminus`): Pantheon's command-line tool
+- **Authenticated Terminus session**: Must be logged in via `terminus auth:login`
 - **Platform-specific tools**:
   - WordPress sites: WP-CLI integration via `terminus remote:wp`
   - Drupal sites: Drush integration via `terminus remote:drush`
@@ -53,10 +53,10 @@ terminus auth:login
 ```
 
 ### Environment Options
-- `dev` - Development environment
-- `test` - Test environment
-- `live` - Production environment
-- `all` - Analyze all three environments with comparison
+- `dev`: Development environment
+- `test`: Test environment
+- `live`: Production environment
+- `all`: Analyze all three environments with comparison
 
 ### Examples
 ```bash
@@ -90,12 +90,12 @@ The script provides detailed analysis including:
 
 The script supports exporting results to multiple formats:
 
-- **JSON** - Structured data for programmatic processing
-- **CSV** - Spreadsheet format for data analysis
-- **TXT** - Plain text report
-- **HTML** - Formatted web report with styling
-- **Markdown** - Documentation format for GitHub/wikis
-- **ALL** - Export to all formats simultaneously
+- **JSON**: Structured data for programmatic processing
+- **CSV**: Spreadsheet format for data analysis
+- **TXT**: Plain text report
+- **HTML**: Formatted web report with styling
+- **Markdown**: Documentation format for GitHub/wikis
+- **ALL**: Export to all formats simultaneously
 
 Export files are automatically named: `storage-analysis-{site}-{envs}-{timestamp}.{format}`
 
@@ -173,10 +173,10 @@ terminus env:info sitename.env
 
 ### Basic Tests
 The repository includes basic test scripts in the `basic-tests/` directory:
-- `auth-test.sh` - Check Terminus authentication
-- `connection-test.sh` - Test site connectivity
-- `platform-test.sh` - Verify platform detection
-- `simple-storage.sh` - Basic storage analysis
+- `auth-test.sh`: Check Terminus authentication
+- `connection-test.sh`: Test site connectivity
+- `platform-test.sh`: Verify platform detection
+- `simple-storage.sh`: Basic storage analysis
 
 ## Contributing
 
