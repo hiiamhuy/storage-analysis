@@ -1,8 +1,0 @@
-Site Name,Platform,Environments,Timestamp,Total Size,Total Files,Total Directories
-"uwsurgery","wordpress","dev test live","Wed Sep 17 00:25:07 PDT 2025","2.28 GB","62,347","7,261"
-
-Environment Comparison
-Environment,Size,Files
-"dev","2.28 GB","62,347"
-"test","1.98 GB","37,916"
-"live","1.98 GB","37,913"
