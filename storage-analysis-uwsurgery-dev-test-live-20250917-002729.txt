@@ -1,0 +1,20 @@
+PANTHEON STORAGE ANALYSIS REPORT
+===============================================
+
+Site Information:
+- Site Name: uwsurgery
+- Platform: wordpress
+- Environments Analyzed: dev test live
+- Analysis Date: Wed Sep 17 00:25:07 PDT 2025
+
+Summary:
+- Total Size: 2.28 GB
+- Total Files: 62,347
+- Total Directories: 7,261
+
+Environment Comparison:
+Environment  Total Size      Files       
+----------   ----------      -----       
+dev          2.28 GB         62,347      
+test         1.98 GB         37,916      
+live         1.98 GB         37,913      
