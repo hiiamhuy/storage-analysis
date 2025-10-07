@@ -114,6 +114,16 @@ get_wordpress_storage() {
     echo "Waking environment..."
     terminus env:wake $site.$env >/dev/null 2>&1
 
+    # Verify WP-CLI is accessible
+    echo "Verifying WP-CLI access..."
+    if ! terminus remote:wp $site.$env -- cli version >/dev/null 2>&1; then
+        echo -e "${RED}ERROR: WP-CLI is not accessible for this WordPress site${NC}"
+        echo "This may indicate a Terminus configuration issue or the site may not have WP-CLI available."
+        echo "------------------------------------------------"
+        echo
+        return 1
+    fi
+
     # Get storage with error suppression
     echo "Calculating storage (suppressing PHP warnings)..."
 
@@ -1003,6 +1013,12 @@ esac
 # Detect platform
 PLATFORM=$(detect_platform $SITE_NAME)
 
+# Validate platform detection
+if [ -z "$PLATFORM" ]; then
+    echo -e "${RED}ERROR: Unable to detect platform for $SITE_NAME${NC}"
+    exit 1
+fi
+
 # Initialize export data
 ANALYSIS_DATA[site_name]="$SITE_NAME"
 ANALYSIS_DATA[platform]="$PLATFORM"
@@ -1019,17 +1035,17 @@ echo
 # Run analysis
 for env in "${ENVIRONMENTS[@]}"; do
     if terminus env:info $SITE_NAME.$env --field=id >/dev/null 2>&1; then
-        case $PLATFORM in
-            "wordpress")
-                get_wordpress_storage "$SITE_NAME" "$env"
-                ;;
-            "drupal")
-                get_drupal_storage "$SITE_NAME" "$env"
-                ;;
-            *)
-                get_generic_storage "$SITE_NAME" "$env"
-                ;;
-        esac
+        # Route to platform-specific analysis function
+        if [ "$PLATFORM" = "wordpress" ]; then
+            # Explicitly use WordPress analysis method
+            get_wordpress_storage "$SITE_NAME" "$env"
+        elif [ "$PLATFORM" = "drupal" ]; then
+            # Explicitly use Drupal analysis method
+            get_drupal_storage "$SITE_NAME" "$env"
+        else
+            # Fall back to generic SSH analysis
+            get_generic_storage "$SITE_NAME" "$env"
+        fi
     else
         echo -e "${RED}ERROR: Cannot access $SITE_NAME.$env${NC}"
         echo "------------------------------------------------"
